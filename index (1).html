@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💜 Para Titi — Dia dos Namorados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────────────── */
+    :root {
+      --bg:          #07000f;
+      --bg-2:        #0f0020;
+      --bg-3:        #1a0035;
+      --purple:      #5c00a3;
+      --purple-mid:  #7b2fbe;
+      --purple-glow: #a855f7;
+      --lilac:       #c084fc;
+      --pink:        #e879f9;
+      --rose:        #f472b6;
+      --white:       #f8f0ff;
+      --muted:       rgba(200,160,255,0.55);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.75;
+    }
+
+    /* ─── SCROLLBAR ───────────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple-mid); border-radius: 3px; }
+
+    /* ─── FLOATING HEARTS ────────────────────────────────────────────────── */
+    #hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .h {
+      position: absolute;
+      bottom: -60px;
+      font-style: normal;
+      animation: floatUp linear infinite;
+      opacity: 0;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0)     rotate(0deg)   scale(0.6); opacity: 0; }
+      8%   { opacity: 0.8; }
+      85%  { opacity: 0.4; }
+      100% { transform: translateY(-105vh) rotate(540deg) scale(0.3); opacity: 0; }
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.1rem 2rem;
+      background: rgba(7,0,15,0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(168,85,247,0.18);
+    }
+
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    nav a:hover { color: var(--pink); }
+
+    /* ─── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 45%,
+          rgba(92,0,163,0.35) 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3rem, 11vw, 9rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #e879f9 0%, #a855f7 45%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 0.9s ease 0.15s both;
+      text-shadow: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-or {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--muted);
+      animation: fadeUp 0.9s ease 0.3s both;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-alt {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      color: var(--rose);
+      animation: fadeUp 0.9s ease 0.4s both;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-style: italic;
+      color: rgba(248,240,255,0.72);
+      max-width: 600px;
+      line-height: 1.85;
+      animation: fadeUp 0.9s ease 0.55s both;
+      margin-bottom: 3rem;
+    }
+
+    .bomb-row {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      animation: fadeUp 0.9s ease 0.7s both, bombPulse 2.5s ease-in-out 1.6s infinite;
+      margin-bottom: 2.5rem;
+    }
+
+    @keyframes bombPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+    .hero-date {
+      display: inline-block;
+      padding: 0.45rem 2rem;
+      border: 1px solid rgba(168,85,247,0.4);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      animation: fadeUp 0.9s ease 0.85s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%, rgba(168,85,247,0.5) 30%,
+        rgba(244,114,182,0.6) 50%, rgba(168,85,247,0.5) 70%, transparent 100%);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SECTIONS ────────────────────────────────────────────────────────── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 2rem;
+    }
+
+    .inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      margin-bottom: 1rem;
+    }
+
+    .sec-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.6rem, 4.5vw, 2.9rem);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      line-height: 1.25;
+    }
+
+    .sec-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: rgba(248,240,255,0.78);
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ─── MANGA PANEL ─────────────────────────────────────────────────────── */
+    .manga {
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 6px;
+      padding: 2rem 2.4rem;
+      margin: 2rem 0;
+      position: relative;
+      background: rgba(92,0,163,0.08);
+      overflow: hidden;
+    }
+
+    .manga::before {
+      content: attr(data-tag);
+      position: absolute;
+      top: -1px; left: 24px;
+      background: var(--bg-3);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-top: none;
+      padding: 2px 14px;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pink);
+    }
+
+    .manga::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(168,85,247,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ─── GRID CARDS ──────────────────────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: rgba(26,0,53,0.6);
+      border: 1px solid rgba(168,85,247,0.18);
+      border-radius: 12px;
+      padding: 1.8rem 1.6rem;
+      text-align: center;
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(244,114,182,0.5);
+      box-shadow: 0 24px 50px rgba(168,85,247,0.18);
+    }
+
+    .card-icon { font-size: 2.2rem; margin-bottom: 0.9rem; display: block; }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--rose);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── REZE SECTION ────────────────────────────────────────────────────── */
+    .reze-section {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%,
+          rgba(92,0,163,0.22) 0%, transparent 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .reze-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+      font-style: italic;
+      color: rgba(248,240,255,0.88);
+      line-height: 1.9;
+      padding: 1.6rem 2rem 1.6rem 2.4rem;
+      border-left: 3px solid var(--pink);
+      margin: 2rem 0;
+    }
+
+    /* ─── GLITCH TITLE ────────────────────────────────────────────────────── */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glitch::before {
+      animation: glitch1 4s infinite;
+      clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
+      left: -2px;
+    }
+
+    .glitch::after {
+      animation: glitch2 4s infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+      left: 2px;
+    }
+
+    @keyframes glitch1 {
+      0%, 90%, 100% { opacity: 0; transform: translateX(0); }
+      92% { opacity: 0.7; transform: translateX(-3px); }
+      94% { opacity: 0; transform: translateX(3px); }
+      96% { opacity: 0.7; transform: translateX(-2px); }
+      98% { opacity: 0; }
+    }
+
+    @keyframes glitch2 {
+      0%, 88%, 100% { opacity: 0; transform: translateX(0); }
+      90% { opacity: 0.7; transform: translateX(3px); }
+      92% { opacity: 0; transform: translateX(-3px); }
+      94% { opacity: 0.5; transform: translateX(2px); }
+      96% { opacity: 0; }
+    }
+
+    /* ─── PROMISES ───────────────────────────────────────────────────────── */
+    .promises-bg {
+      background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    }
+
+    .promise-list { margin-top: 2.5rem; }
+
+    .promise-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(168,85,247,0.1);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: rgba(248,240,255,0.8);
+      line-height: 1.75;
+      transition: background 0.25s;
+    }
+
+    .promise-item:hover { background: rgba(168,85,247,0.04); border-radius: 8px; padding-left: 0.5rem; }
+
+    .promise-glyph {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(92,0,163,0.35);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 50%;
+      font-size: 0.95rem;
+      margin-top: 2px;
+    }
+
+    /* ─── FUTURE DREAMS ──────────────────────────────────────────────────── */
+    .dream-strip {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    .dream-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.4rem;
+      background: rgba(92,0,163,0.22);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 100px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: rgba(248,240,255,0.82);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .dream-pill:hover {
+      border-color: var(--pink);
+      box-shadow: 0 0 18px rgba(244,114,182,0.22);
+    }
+
+    /* ─── STATS ROW ───────────────────────────────────────────────────────── */
+    .stats-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(26,0,53,0.6);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 12px;
+    }
+
+    .stat-num {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── FINAL LETTER ────────────────────────────────────────────────────── */
+    .final-section {
+      text-align: center;
+      padding: 9rem 2rem 7rem;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% 60%,
+          rgba(92,0,163,0.3) 0%, transparent 70%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+      border-top: 1px solid rgba(168,85,247,0.25);
+    }
+
+    .final-heart {
+      font-size: 5.5rem;
+      display: block;
+      animation: heartbeat 1.6s ease-in-out infinite;
+      margin-bottom: 2.5rem;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14%  { transform: scale(1.22); }
+      28%  { transform: scale(1); }
+      42%  { transform: scale(1.18); }
+      70%  { transform: scale(1); }
+    }
+
+    .final-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--rose);
+      margin-bottom: 3.5rem;
+    }
+
+    .final-letter {
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+      font-weight: 500;
+      color: rgba(248,240,255,0.93);
+      line-height: 2.1;
+      text-align: center;
+    }
+
+    .final-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--lilac);
+    }
+
+    /* ─── MUSIC PLAYER ────────────────────────────────────────────────────── */
+    .player {
+      position: fixed;
+      bottom: 1.6rem;
+      right: 1.6rem;
+      z-index: 300;
+      background: rgba(15,0,32,0.88);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(168,85,247,0.35);
+      border-radius: 14px;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      width: 260px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 25px rgba(168,85,247,0.12);
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+
+    .player:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 35px rgba(168,85,247,0.25); }
+
+    .player-vinyl {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: conic-gradient(
+        rgba(168,85,247,0.9) 0deg 30deg,
+        rgba(26,0,53,0.9) 30deg 90deg,
+        rgba(244,114,182,0.9) 90deg 130deg,
+        rgba(26,0,53,0.9) 130deg 180deg,
+        rgba(168,85,247,0.9) 180deg 210deg,
+        rgba(26,0,53,0.9) 210deg 270deg,
+        rgba(244,114,182,0.9) 270deg 310deg,
+        rgba(26,0,53,0.9) 310deg 360deg
+      );
+      position: relative;
+      flex-shrink: 0;
+      animation: spin 4s linear infinite paused;
+    }
+
+    .player-vinyl.playing { animation-play-state: running; }
+
+    .player-vinyl::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .player-info { flex: 1; overflow: hidden; }
+
+    .player-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-artist {
+      font-size: 0.72rem;
+      color: var(--lilac);
+      margin-top: 2px;
+    }
+
+    .player-btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(168,85,247,0.25);
+      border: 1px solid rgba(168,85,247,0.4);
+      border-radius: 50%;
+      font-size: 0.85rem;
+      color: var(--white);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .player-btn:hover { background: rgba(168,85,247,0.45); }
+
+    /* hidden youtube iframe */
+    #yt-frame {
+      position: fixed;
+      top: -9999px;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
+    }
+
+    /* ─── REVEAL ──────────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── GLOW LINE ───────────────────────────────────────────────────────── */
+    .glow-hr {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple-mid), var(--pink));
+      border: none;
+      border-radius: 2px;
+      margin: 0 0 2.5rem;
+    }
+
+    /* ─── CHAINSAW DECORATION ─────────────────────────────────────────────── */
+    .chain-deco {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 2rem 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .chain-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.4), transparent);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.78rem;
+      color: rgba(200,160,255,0.3);
+      letter-spacing: 0.08em;
+      border-top: 1px solid rgba(168,85,247,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer span { color: var(--pink); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { gap: 1rem; font-size: 0.65rem; }
+      .player { width: 220px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── FLOATING HEARTS BG ──────────────────────────────────────────────── -->
+<div id="hearts-bg" aria-hidden="true"></div>
+
+<!-- ─── MUSIC PLAYER ─────────────────────────────────────────────────────── -->
+<div class="player" id="player" role="button" aria-label="Tocar / Pausar música">
+  <div class="player-vinyl" id="vinyl"></div>
+  <div class="player-info">
+    <div class="player-title">I Love You</div>
+    <div class="player-artist">Fontaines D.C.</div>
+  </div>
+  <div class="player-btn" id="play-btn">▶</div>
+</div>
+
+<!-- hidden YouTube iframe -->
+<div id="yt-frame"></div>
+
+<!-- ─── NAV ──────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#reze">Reze</a>
+  <a href="#amor">Por que te amo</a>
+  <a href="#promessas">Promessas</a>
+  <a href="#futuro">Futuro</a>
+  <a href="#carta">Carta</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="inicio">
+  <p class="hero-eyebrow">💜 12 de Junho · Dia dos Namorados 💜</p>
+
+  <h1 class="hero-name glitch" data-text="Tifa">Tifa</h1>
+  <p class="hero-or">minha princesinha linda</p>
+  <p class="hero-alt">Titi </p>
+
+  <p class="hero-tagline">
+    "eu te amo muito garota vc é a melhor coisa que ja me aconteceu —<br/>
+    eu não consigo expressar em palavras o meu amor por voçê"
+  </p>
+
+  <div class="bomb-row">eu vou te amar pra sempre</div>
+
+  <div class="hero-date">Para sempre e Com todo o meu amor</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     REZE — CHAINSAW MAN
+═══════════════════════════════════════════════════════════════════════════ -->
+<section class="reze-section reveal" id="reze">
+  <div class="inner">
+    <p class="eyebrow">— Inspiração especial</p>
+    <h2 class="sec-title">Como a <em>Reze</em> de Chainsaw Man</h2>
+    <hr class="glow-hr" />
+
+    <p class="body-text">
+      Reze — a Garota Bomba — é um dos personagens mais marcantes de Chainsaw Man.
+      Ela surge como uma tempestade numa manhã comum: bonita, misteriosa, carregando
+      por dentro uma história de dor que poucos conseguem enxergar. Ela é explosiva
+      por natureza, mas esconde dentro de si uma ternura que só aparece pra quem tem
+      a sorte de chegar perto de verdade.
+    </p>
+
+    <div class="manga" data-tag="Painel especial — Chainsaw Man">
+      <p class="body-text" style="margin-bottom: 0;">
+        Denji ficou parado quando a conheceu. Não porque ela era perigosa —
+        mas porque, pela primeira vez, alguém o olhou como se ele importasse.
+        Às vezes o amor chega assim: sem aviso, com força de explosão,
+        e deixa uma marca que não some mais.
+      </p>
+    </div>
+
+    <div class="reze-quote">
+      "Assim como Reze entrou na vida de Denji como uma bomba prestes a explodir,
+      você entrou na minha — e mudou tudo. A diferença é que a nossa história
+      não tem fim trágico. A nossa história continua."
+    </div>
+
+    <p class="body-text">
+      Você tem a mesma energia que ela: uma beleza que para o coração,
+      uma força que impressiona, e uma doçura escondida que só eu tenho
+      o privilégio de conhecer todos os dias. Só que você é mais do que
+      qualquer personagem — você é real, e você é minha.
+    </p>
+
+    <div class="chain-deco">
+      <span class="chain-line"></span>
+      <span>⛓️ CHAINSAW HEART ⛓️</span>
+      <span class="chain-line"></span>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <span class="card-icon">💥</span>
+        <div class="card-title">nosso amor</div>
+        <div class="card-body">toda vez que a gente briga eu percebo quanto eu te amo mais e como eu tenho muito medo de te perder voçe não tem ideia eu quero ficar com vc pra sempre.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌙</span>
+        <div class="card-title">nossas conversas</div>
+        <div class="card-body">toda noite é o melhor momento do meu dia eu amo ficar com vc e conversar vc fez todas minhas noites terem vida eu te amo.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⛓️</span>
+        <div class="card-title">Única</div>
+        <div class="card-body">eu não quero e nem vou ficar com mais ninguem amor eu vou ficar do seu lado pra sempre.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔮</span>
+        <div class="card-title">ideias</div>
+        <div class="card-body">amor eu amo como concordo com vc em tudo que da pra pensar eu realmente adoro isso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     POR QUE TE AMO
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="amor" class="reveal">
+  <div class="inner">
+    <p class="eyebrow">— de dentro do meu coraçãozinho</p>
+    <h2 class="sec-title">Por que eu te <em>amo</em></h2>
+    <hr class="glow-hr" />
+
+    <p class="body-text">
+      voçe é a melhor coisa que ja me aconteceu e eu amo te amar com toda minha alma.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="card-icon">👀</span>
+        <div class="card-title">vce</div>
+        <div class="card-body">eu amo seus olhinhos mto meu amor eu aceitaria ser devorado por eles.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💪</span>
+        <div class="card-title">nós</div>
+        <div class="card-body">eu sinto q junto de vce eu consigo fazer qualquer coisa meu amor.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🧠</span>
+        <div class="card-title">Sua Inteligência</div>
+        <div class="card-body">amor eu acho mto fofo quando vc não sabe algo ou se confunde me deixa muito feliz de ver isso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     O QUE VOCÊ SIGNIFICA
+═══════════════════════════════════════════════════════════════════════════ -->
+<section style="background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);" class="reveal">
+  <div class="inner">
+    <p class="eyebrow">— O que você é pra mim</p>
+    <h2 class="sec-title">Você mudou em mim<em>eu te amo</em></h2>
+    <hr class="glow-hr" />
+
+    <div class="manga" data-tag="Confissão">
+      <p class="body-text">
+        Antes de você, eu acho que não sabia oq era amor de verdade.
+        Não sabia que eu conseguia amar algo tanto assim e com tanta intensidade —
+        e que isso seria a melhor sensação da minha vida.
+      </p>
+      <p class="body-text">
+        Você me faz querer ser a melhor versão de mim.
+        Me faz querer ser o melhor namorado possivel,
+        me faz ter vontade de levantar todo dia pra falar com vc
+        — e que vce sempre vai estar lá pra mim.
+      </p>
+      <p class="body-text" style="margin-bottom: 0;">
+        Você não é só minha namorada. Você é minha parceira, minha cúmplice,
+        meu lar, meu porto seguro minha vida
+        eu te amo e isso nunca vai mudar.
+      </p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">amor por você</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">certeza de te querer</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">pessoa como você</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Para<br/>sempre</span>
+        <span class="stat-label">o quanto quero ficar</span>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+      <div class="card">
+        <span class="card-icon">🏠</span>
+        <div class="card-title">Meu Lar</div>
+        <div class="card-body">voçe é meu porto seguro a pessoa que eu conto tudo</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⭐</span>
+        <div class="card-title">Minha deusa</div>
+        <div class="card-body">eu te adoro como uma deidade</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛡️</span>
+        <div class="card-title">meu cantinho</div>
+        <div class="card-body">quando eu to com vc eu me sinto quentinho é muito bom</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     FUTURO
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="futuro" class="reveal">
+  <div class="inner">
+    <p class="eyebrow">— O que eu quero pra gente</p>
+    <h2 class="sec-title">Sonhos que quero <em>viver com você</em></h2>
+    <hr class="glow-hr" />
+
+    <p class="body-text">
+      eu não me vejo sem vc meu amor voçe é meu tudo.
+      Não existe versão do amanhã que eu queira sem você dentro dela.
+      Esses são alguns dos sonhos que me animam só de imaginar:
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="card-icon">💍</span>
+        <div class="card-title">Te pedir em casamento</div>
+        <div class="card-body">Quero que o dia mais especial da minha vida seja aquele em que você disser sim. eu vou ser um homem completo do seu lado.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💒</span>
+        <div class="card-title">Me casar com você</div>
+        <div class="card-body">eu quero fazer a festa de casamento q vc disse que sonha eu quero muito te ver de vel e selar nosso amor.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">👶</span>
+        <div class="card-title">Ter um filho com você</div>
+        <div class="card-body">eu quero muito que o mael ou a galadriel venham ao mundo eu quero muito que voçe seja a mãe dos meus filhos.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏡</span>
+        <div class="card-title">Nossa casa</div>
+        <div class="card-body">eu quero ficar do seu lado a todo momento quero acordar e dormir do seu lado vc não tem ideia.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">👴🏻👵🏻</span>
+        <div class="card-title">Envelhecer juntos</div>
+        <div class="card-body">eu quero fazer igual o filme que a gente viu e morrer do seu lado eu não me vejo vivendo depois que voçe morrer.</div>
+      </div>
+    </div>
+
+    <div class="chain-deco" style="margin-top: 3rem;">
+      <span class="chain-line"></span>
+      <span>💜 as coisas que a gente vai fazer 💜</span>
+      <span class="chain-line"></span>
+    </div>
+
+    <div class="dream-strip">
+      <div class="dream-pill">💜 Casar</div>
+      <div class="dream-pill">👶 galadriel</div>
+      <div class="dream-pill">🏡 Nossa casa</div>
+      <div class="dream-pill">🐶 Um outro gatinho pra fazer companhia pro scott</div>
+      <div class="dream-pill">⭐ Um amor eterno</div>
+      <div class="dream-pill">👴🏻 Envelhecer juntos</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     CARTA FINAL
+═══════════════════════════════════════════════════════════════════════════ -->
+<section class="final-section reveal" id="carta">
+  <span class="final-heart">💜</span>
+
+  <h2 class="final-title">
+    Do fundo do meu coração,<br/>
+    pra você, Titi
+  </h2>
+
+  <div class="final-letter">
+    namorar vc é a melhor coisa q ja aconteceu na minha vida
+    <br/><br/>
+    eu te amo e quero muito ficar pra sempre com vc,
+    <br/><br/>
+    eu quero me casar com vc
+    <br/><br/>
+    eu quero ter um filho com vc
+    <br/><br/>
+    eu amo todas as partes de vc
+    <br/><br/>
+    e vou amar ainda mais com o passar do tempo,
+    <br/><br/>
+    eu te amo
+  </div>
+
+  <div class="final-sig">
+    — Do seu namorado que te ama muito com cada pedacinho dele 💜
+  </div>
+
+  <div class="chain-deco" style="margin-top: 4rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+    <span class="chain-line"></span>
+    <span>💣 vc é minha reze e eu sou seu denji pra sempre</span>
+    <span class="chain-line"></span>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  Feito com <span>💜</span> especialmente para <span>Tifa — Titi</span>
+  <br/>
+  <span>12 de Junho · Dia dos Namorados · 2026</span>
+  <br/><br/>
+  fiz decorado da reze pq eu sempre te vi como ela des do inicio do nosso relacionamento &nbsp;·&nbsp; "I Love You" — Fontaines D.C.
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════════════════════════ -->
+<script>
+/* ── FLOATING HEARTS ─────────────────────────────────────────────────────── */
+(function () {
+  const bg = document.getElementById('hearts-bg');
+  const emojis = ['♥', '💜', '💗', '💕', '✨', '💜', '♥', '💖'];
+  const colors = ['#c084fc','#e879f9','#f472b6','#a855f7','#f9a8d4','#d8b4fe'];
+
+  function makeHeart () {
+    const el = document.createElement('span');
+    el.className = 'h';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const size   = 10 + Math.random() * 22;
+    const left   = Math.random() * 100;
+    const dur    = 9 + Math.random() * 12;
+    const delay  = Math.random() * 6;
+    const color  = colors[Math.floor(Math.random() * colors.length)];
+    el.style.cssText = [
+      `left:${left}%`,
+      `font-size:${size}px`,
+      `color:${color}`,
+      `animation-duration:${dur}s`,
+      `animation-delay:${delay}s`,
+    ].join(';');
+    bg.appendChild(el);
+    setTimeout(() => el.remove(), (dur + delay) * 1000 + 500);
+  }
+
+  // stagger initial batch
+  for (let i = 0; i < 30; i++) setTimeout(makeHeart, i * 250);
+  setInterval(makeHeart, 700);
+})();
+
+/* ── SCROLL REVEAL ───────────────────────────────────────────────────────── */
+(function () {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+/* ── YOUTUBE PLAYER ──────────────────────────────────────────────────────── */
+// "I Love You" — Fontaines D.C. (official video: youtube.com/watch?v=Ty9Pcg3qrmU)
+const VIDEO_ID = 'Ty9Pcg3qrmU';
+
+const playerEl  = document.getElementById('player');
+const vinylEl   = document.getElementById('vinyl');
+const playBtn   = document.getElementById('play-btn');
+const ytFrame   = document.getElementById('yt-frame');
+
+let ytPlayer  = null;
+let isPlaying = false;
+
+// Inject YouTube IFrame API
+const ytScript = document.createElement('script');
+ytScript.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(ytScript);
+
+window.onYouTubeIframeAPIReady = function () {
+  const iframe = document.createElement('div');
+  ytFrame.appendChild(iframe);
+
+  ytPlayer = new YT.Player(iframe, {
+    width: 1, height: 1,
+    videoId: VIDEO_ID,
+    playerVars: { autoplay: 0, loop: 1, playlist: VIDEO_ID, origin: location.origin },
+    events: {
+      onReady (e) {
+        e.target.setVolume(70);
+      },
+      onStateChange (e) {
+        if (e.data === YT.PlayerState.PLAYING) {
+          isPlaying = true;
+          playBtn.textContent = '⏸';
+          vinylEl.classList.add('playing');
+        } else {
+          isPlaying = false;
+          playBtn.textContent = '▶';
+          vinylEl.classList.remove('playing');
+        }
+      }
+    }
+  });
+};
+
+playerEl.addEventListener('click', () => {
+  if (!ytPlayer || typeof ytPlayer.playVideo !== 'function') return;
+  if (isPlaying) { ytPlayer.pauseVideo(); }
+  else           { ytPlayer.playVideo(); }
+});
+</script>
+
+</body>
+</html>
