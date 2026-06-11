@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Tifa 💜 minha princesinha Dia dos Namorados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --deep:    #0f0015;
+      --abyss:   #1a0033;
+      --purple:  #6b00d4;
+      --bright:  #9333ea;
+      --lilac:   #c084fc;
+      --pink:    #f0abfc;
+      --white:   #f5e6ff;
+      --chain:   #7e22ce;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS DE CORRENTES ── */
+    #chains-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .45;
+    }
+
+    /* ── PARTÍCULAS ── */
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float-up linear infinite;
+      z-index: 0;
+    }
+    @keyframes float-up {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: .6; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    /* ── LAYOUT ── */
+    section { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #3b006a55, transparent);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fade-in .8s .3s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--lilac) 45%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px #c084fc88);
+      opacity: 0;
+      animation: fade-in .9s .6s forwards, pulse-glow 4s 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 30px #c084fc66); }
+      50%       { filter: drop-shadow(0 0 70px #c084fccc); }
+    }
+
+    .hero-tagline {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--pink);
+      letter-spacing: .08em;
+      opacity: 0;
+      animation: fade-in .9s 1s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      opacity: 0;
+      animation: fade-in .9s 1.8s forwards;
+    }
+    .hero-scroll span {
+      font-size: .65rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--lilac);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, var(--lilac), transparent);
+      animation: line-pulse 2s ease-in-out infinite;
+    }
+    @keyframes line-pulse {
+      0%, 100% { opacity: .4; transform: scaleY(1); }
+      50%       { opacity: 1;  transform: scaleY(1.1); }
+    }
+
+    @keyframes fade-in {
+      to { opacity: 1; }
+    }
+
+    /* ══════════════════════════════
+       REZE QUOTE
+    ══════════════════════════════ */
+    #reze-quote {
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(180deg, transparent, #2d005555 40%, transparent);
+    }
+
+    .reze-symbol {
+      font-size: 5rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 20px var(--purple));
+      animation: spin-slow 20s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin-slow {
+      to { transform: rotate(360deg); }
+    }
+
+    .quote-block {
+      max-width: 680px;
+      margin-top: 3rem;
+      border-left: 3px solid var(--purple);
+      padding: .5rem 2rem;
+      position: relative;
+    }
+    .quote-block::before {
+      content: '\275D';
+      position: absolute;
+      top: -1.5rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      color: var(--purple);
+      opacity: .5;
+      line-height: 1;
+    }
+    .quote-text {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--pink);
+      line-height: 1.7;
+    }
+    .quote-author {
+      margin-top: 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: .8rem;
+      letter-spacing: .25em;
+      color: var(--lilac);
+    }
+
+    /* ══════════════════════════════
+       MENSAGEM — GRIMÓRIO
+    ══════════════════════════════ */
+    #mensagem {
+      padding: 6rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .grimoire {
+      max-width: 740px;
+      width: 100%;
+      background: linear-gradient(145deg, #1e003a, #2d005a);
+      border: 1px solid var(--chain);
+      border-radius: 4px;
+      box-shadow:
+        0 0 0 1px #6b00d422,
+        0 0 60px #6b00d433,
+        inset 0 0 80px #1a003366;
+      padding: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grimoire::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 38px,
+          #6b00d40d 38px,
+          #6b00d40d 39px
+        );
+      pointer-events: none;
+    }
+
+    .grimoire-seal {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      opacity: .3;
+      animation: breathe 4s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: .25; transform: scale(1); }
+      50%       { opacity: .5;  transform: scale(1.05); }
+    }
+
+    .grimoire-label {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      margin-bottom: 2rem;
+    }
+
+    .grimoire-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--pink);
+      margin-bottom: 2rem;
+      line-height: 1.25;
+    }
+
+    .grimoire-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--white);
+      opacity: .92;
+      white-space: pre-wrap;
+    }
+
+    .grimoire-sig {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #6b00d444;
+      font-family: 'Cinzel', serif;
+      font-size: .9rem;
+      color: var(--lilac);
+      letter-spacing: .15em;
+    }
+
+    /* ══════════════════════════════
+       EDITAR MENSAGEM
+    ══════════════════════════════ */
+    #editor-section {
+      padding: 5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--lilac);
+      letter-spacing: .1em;
+      text-align: center;
+    }
+    .section-subtitle {
+      font-size: .9rem;
+      color: var(--pink);
+      opacity: .7;
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .editor-card {
+      max-width: 640px;
+      width: 100%;
+      background: #1e003a;
+      border: 1px solid #6b00d455;
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .editor-card label {
+      font-size: .8rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--lilac);
+    }
+
+    .editor-card input,
+    .editor-card textarea {
+      background: #0f0015;
+      border: 1px solid #6b00d466;
+      border-radius: 2px;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      padding: .75rem 1rem;
+      width: 100%;
+      resize: vertical;
+      transition: border-color .3s;
+    }
+    .editor-card input:focus,
+    .editor-card textarea:focus {
+      outline: none;
+      border-color: var(--bright);
+      box-shadow: 0 0 12px #9333ea44;
+    }
+    .editor-card textarea {
+      min-height: 180px;
+    }
+
+    .btn-save {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--purple), var(--bright));
+      border: none;
+      border-radius: 2px;
+      color: #fff;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: .85rem;
+      letter-spacing: .2em;
+      padding: .75rem 2rem;
+      text-transform: uppercase;
+      transition: filter .3s, transform .2s;
+    }
+    .btn-save:hover { filter: brightness(1.2); transform: translateY(-2px); }
+    .btn-save:active { transform: translateY(0); }
+
+    .saved-toast {
+      display: none;
+      background: #3b006a;
+      border: 1px solid var(--bright);
+      border-radius: 2px;
+      color: var(--pink);
+      font-size: .85rem;
+      padding: .6rem 1.2rem;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════
+       CARROSSEL — THE SIENNA
+    ══════════════════════════════ */
+    #musicas {
+      padding: 6rem 2rem;
+    }
+
+    .musicas-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .musicas-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: .75rem;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.77,0,.18,1);
+      gap: 0;
+    }
+
+    .song-card {
+      min-width: 100%;
+      padding: 0 .5rem;
+    }
+
+    .song-inner {
+      background: linear-gradient(145deg, #1e003a, #2a0055);
+      border: 1px solid #7e22ce66;
+      border-radius: 4px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 0 40px #6b00d422;
+      transition: box-shadow .3s;
+    }
+    .song-inner:hover {
+      box-shadow: 0 0 70px #9333ea44;
+    }
+
+    .song-cover {
+      width: 110px;
+      height: 110px;
+      min-width: 110px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, var(--purple), var(--abyss));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border: 1px solid var(--chain);
+      box-shadow: 0 0 25px #7e22ce55;
+      position: relative;
+      overflow: hidden;
+    }
+    .song-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, #ffffff0d);
+    }
+
+    .song-info { flex: 1; }
+    .song-number {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .4em;
+      color: var(--purple);
+      margin-bottom: .5rem;
+    }
+    .song-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--pink);
+      line-height: 1.2;
+      margin-bottom: .6rem;
+    }
+    .song-album {
+      font-size: .85rem;
+      color: var(--lilac);
+      opacity: .8;
+      margin-bottom: 1rem;
+    }
+    .song-desc {
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--white);
+      opacity: .75;
+      line-height: 1.65;
+    }
+
+    .song-bar {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .bar-track {
+      flex: 1;
+      height: 3px;
+      background: #3b006a;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      animation: bar-anim 3s ease-in-out infinite alternate;
+    }
+    @keyframes bar-anim {
+      from { width: 35%; }
+      to   { width: 85%; }
+    }
+    .bar-dur {
+      font-size: .75rem;
+      color: var(--lilac);
+      opacity: .7;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .ctrl-btn {
+      background: #1e003a;
+      border: 1px solid var(--chain);
+      border-radius: 50%;
+      color: var(--lilac);
+      cursor: pointer;
+      font-size: 1.2rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s, color .25s, box-shadow .25s;
+    }
+    .ctrl-btn:hover {
+      background: var(--purple);
+      color: var(--white);
+      box-shadow: 0 0 20px #6b00d466;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: .6rem;
+      align-items: center;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3b006a;
+      transition: background .3s, transform .3s;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: var(--bright);
+      transform: scale(1.5);
+    }
+
+    /* ══════════════════════════════
+       CONTADOR
+    ══════════════════════════════ */
+    #counter {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, #3b006633, transparent);
+    }
+
+    .counter-label {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      margin-bottom: 2rem;
+    }
+
+    .counter-grid {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1rem, 3vw, 3rem);
+      flex-wrap: wrap;
+    }
+
+    .counter-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .counter-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+    }
+
+    .counter-word {
+      font-size: .7rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--lilac);
+      opacity: .8;
+    }
+
+    .counter-sep {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--purple);
+      opacity: .5;
+      align-self: flex-start;
+      padding-top: .1rem;
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+      border-top: 1px solid #3b006a55;
+    }
+
+    .footer-heart {
+      font-size: 3rem;
+      display: block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px var(--pink));
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14%       { transform: scale(1.15); }
+      28%       { transform: scale(1); }
+      42%       { transform: scale(1.1); }
+      70%       { transform: scale(1); }
+    }
+
+    .footer-text {
+      margin-top: 1.5rem;
+      font-size: .85rem;
+      color: var(--lilac);
+      opacity: .6;
+      letter-spacing: .1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .song-inner { flex-direction: column; align-items: flex-start; }
+      .song-cover { width: 80px; height: 80px; min-width: 80px; font-size: 2rem; }
+      .grimoire { padding: 2rem 1.5rem; }
+      .editor-card { padding: 1.5rem; }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto 4rem;
+      opacity: .3;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--chain); }
+    .divider-icon { font-size: 1.2rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Canvas de Correntes -->
+<canvas id="chains-canvas"></canvas>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">💜 12 de junho &nbsp;·&nbsp; Dia dos Namorados</p>
+  <h1 class="hero-name">Tifa</h1>
+  <p class="hero-tagline">Uma mensagem guardada nas correntes do meu coração</p>
+  <div class="hero-scroll">
+    <span>Descer</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- REZE QUOTE -->
+<section id="reze-quote">
+  <div class="divider"><div class="divider-line"></div><div class="divider-icon">⛓️</div><div class="divider-line"></div></div>
+  <span class="reze-symbol reveal">🌸</span>
+  <div class="quote-block reveal">
+    <p class="quote-text">
+      "Mesmo que o mundo se destrua, mesmo que as correntes me prendam —
+      enquanto eu puder sentir, escolho sentir por você."
+    </p>
+    <p class="quote-author">— Reze, Chainsaw Man &nbsp;·&nbsp; literalmente a minha esposa a reze</p>
+  </div>
+</section>
+
+<!-- MENSAGEM PRINCIPAL -->
+<section id="mensagem">
+  <div class="grimoire reveal" id="grimoire-card">
+    <div class="grimoire-seal">🔮</div>
+    <p class="grimoire-label">codice &nbsp;·&nbsp; Dia dos Namorados</p>
+    <h2 class="grimoire-title" id="msg-title">Para Tifa, com todo o meu amor</h2>
+    <p class="grimoire-text" id="msg-body">
+Escreva aqui a sua mensagem para ela...
+
+Use a seção abaixo para personalizar este texto com as suas próprias palavras. Tudo que você digitar aparecerá aqui, como num grimório mágico feito só pra ela. 💜
+
+Pode contar o que ela significa pra você, uma memória especial, ou simplesmente: eu te amo.
+    </p>
+    <p class="grimoire-sig" id="msg-sig">Com amor seu namorado yuu — ✦</p>
+  </div>
+</section>
+
+<!-- EDITOR DE MENSAGEM -->
+<section id="editor-section">
+  <div class="divider reveal"><div class="divider-line"></div><div class="divider-icon">✍️</div><div class="divider-line"></div></div>
+  <h2 class="section-title reveal">Escreva para ela</h2>
+  <p class="section-subtitle reveal">Personalize a mensagem do grimório acima com suas próprias palavras</p>
+  <div class="editor-card reveal">
+    <label for="input-title">Título da mensagem</label>
+    <input type="text" id="input-title" placeholder="Para Tifa, com todo o meu amor" maxlength="80" />
+
+    <label for="input-body">Sua mensagem 💜</label>
+    <textarea id="input-body" placeholder="Escreva aqui o que você sente..."></textarea>
+
+    <label for="input-sig">Assinatura</label>
+    <input type="text" id="input-sig" placeholder="Com amor — Seu nome" maxlength="80" />
+
+    <button class="btn-save" onclick="saveMessage()">✦ Salvar no Grimório</button>
+    <p class="saved-toast" id="toast">💜 Mensagem salva com sucesso!</p>
+  </div>
+</section>
+
+<!-- MÚSICAS THE SIENNA -->
+<section id="musicas">
+  <div class="divider reveal"><div class="divider-line"></div><div class="divider-icon">🎵</div><div class="divider-line"></div></div>
+  <div class="musicas-header reveal">
+    <p class="musicas-eyebrow">Nossas músicas favoritas</p>
+    <h2 class="section-title">The Sienna</h2>
+  </div>
+
+  <div class="carousel-wrapper reveal">
+    <div class="carousel-track" id="carousel-track">
+
+      <!-- Card 1 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">🎸</div>
+          <div class="song-info">
+            <p class="song-number">01 / 06</p>
+            <h3 class="song-title">Saudade de Mim</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">Aquela música que toca quando a saudade aperta, quando o mundo fica quieto e tudo que eu quero é você por perto.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+              <span class="bar-dur">3:42</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">🌙</div>
+          <div class="song-info">
+            <p class="song-number">02 / 06</p>
+            <h3 class="song-title">Noite em Roxo</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">Essa toca quando estamos juntos no escuro, rindo sem motivo, inventando um mundo só nosso.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
+              <span class="bar-dur">4:10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">💜</div>
+          <div class="song-info">
+            <p class="song-number">03 / 06</p>
+            <h3 class="song-title">Correntes</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">Parece feita pra gente — cada verso um pedaço do que sinto mas não sei como dizer em voz alta.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+              <span class="bar-dur">3:58</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">🌸</div>
+          <div class="song-info">
+            <p class="song-number">04 / 06</p>
+            <h3 class="song-title">Voltar pra Você</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">Essa toca toda vez que eu fico longe e fico contando as horas. O refrão me lembra por que você vale tudo.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+              <span class="bar-dur">3:27</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">✨</div>
+          <div class="song-info">
+            <p class="song-number">05 / 06</p>
+            <h3 class="song-title">Infinito Pequeno</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">Às vezes o amor cabe numa coisa pequena — um olhar, uma mensagem. Essa música sabe disso.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+              <span class="bar-dur">4:33</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="song-card">
+        <div class="song-inner">
+          <div class="song-cover">⛓️</div>
+          <div class="song-info">
+            <p class="song-number">06 / 06</p>
+            <h3 class="song-title">A Playlist é Você</h3>
+            <p class="song-album">The Sienna</p>
+            <p class="song-desc">A última, mas não a menos importante. Cada música aqui é um pedaço do que você faz eu sentir.</p>
+            <div class="song-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+              <span class="bar-dur">3:15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+
+    <div class="carousel-controls">
+      <button class="ctrl-btn" id="btn-prev" aria-label="Anterior">&#8592;</button>
+      <div class="carousel-dots" id="dots"></div>
+      <button class="ctrl-btn" id="btn-next" aria-label="Próxima">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTADOR DE AMOR -->
+<section id="counter">
+  <div class="divider reveal"><div class="divider-line"></div><div class="divider-icon">💜</div><div class="divider-line"></div></div>
+  <p class="counter-label reveal">Desde o nosso primeiro dia</p>
+  <div class="counter-grid reveal" id="counter-grid">
+    <div class="counter-unit">
+      <span class="counter-number" id="cnt-days">0</span>
+      <span class="counter-word">dias</span>
+    </div>
+    <span class="counter-sep">:</span>
+    <div class="counter-unit">
+      <span class="counter-number" id="cnt-hours">0</span>
+      <span class="counter-word">horas</span>
+    </div>
+    <span class="counter-sep">:</span>
+    <div class="counter-unit">
+      <span class="counter-number" id="cnt-min">0</span>
+      <span class="counter-word">minutos</span>
+    </div>
+    <span class="counter-sep">:</span>
+    <div class="counter-unit">
+      <span class="counter-number" id="cnt-sec">0</span>
+      <span class="counter-word">segundos</span>
+    </div>
+  </div>
+  <p style="margin-top:2rem; font-size:.85rem; color:var(--lilac); opacity:.5; text-align:center;">
+    ✦ Edite a data de início no arquivo HTML para personalizar o contador ✦
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-heart">💜</span>
+  <p class="footer-text">Feito com amor &nbsp;·&nbsp; Dia dos Namorados &nbsp;·&nbsp; Para Tifa</p>
+</footer>
+
+<script>
+/* ═══════════════════════════
+   CHAINS CANVAS
+═══════════════════════════ */
+(function() {
+  const canvas = document.getElementById('chains-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H;
+  const chains = [];
+  const NUM_CHAINS = 7;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function makeChain(index) {
+    return {
+      x:      (W / (NUM_CHAINS + 1)) * (index + 1) + (Math.random() - .5) * 80,
+      y:      Math.random() * H,
+      length: 60 + Math.random() * 120,
+      linkH:  18 + Math.random() * 8,
+      linkW:  9  + Math.random() * 4,
+      vx:     (Math.random() - .5) * .3,
+      vy:     (Math.random() - .5) * .25,
+      angle:  Math.random() * Math.PI * 2,
+      va:     (Math.random() - .5) * .008,
+      alpha:  .3 + Math.random() * .5,
+    };
+  }
+
+  for (let i = 0; i < NUM_CHAINS; i++) chains.push(makeChain(i));
+
+  function drawLink(cx, cy, w, h, angle, alpha) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = '#7e22ce';
+    ctx.lineWidth   = 2;
+    ctx.shadowColor = '#c084fc';
+    ctx.shadowBlur  = 10;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w, h, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    for (const c of chains) {
+      c.x     += c.vx;
+      c.y     += c.vy;
+      c.angle += c.va;
+      if (c.x < -50)  c.x = W + 50;
+      if (c.x > W+50) c.x = -50;
+      if (c.y < -200) c.y = H + 200;
+      if (c.y > H+200) c.y = -200;
+
+      const numLinks = Math.floor(c.length / c.linkH);
+      for (let i = 0; i < numLinks; i++) {
+        const linkAngle  = c.angle + (i % 2 === 0 ? 0 : Math.PI / 2);
+        const offsetX    = Math.sin(c.angle) * i * c.linkH * .7;
+        const offsetY    = Math.cos(c.angle) * i * c.linkH * .7;
+        const fadeAlpha  = c.alpha * (1 - i / numLinks * .5);
+        drawLink(c.x + offsetX, c.y + offsetY, c.linkW, c.linkH * .5, linkAngle, fadeAlpha);
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ═══════════════════════════
+   PARTÍCULAS
+═══════════════════════════ */
+(function() {
+  const colors = ['#c084fc','#9333ea','#f0abfc','#6b00d4','#e879f9'];
+  const NUM    = 25;
+  for (let i = 0; i < NUM; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 3 + Math.random() * 5;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}vw;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${8+Math.random()*14}s;
+      animation-delay:-${Math.random()*14}s;
+      opacity:.7;
+      box-shadow:0 0 6px currentColor;
+    `;
+    document.body.appendChild(p);
+  }
+})();
+
+/* ═══════════════════════════
+   CARROSSEL
+═══════════════════════════ */
+(function() {
+  const track    = document.getElementById('carousel-track');
+  const dotsEl   = document.getElementById('dots');
+  const btnPrev  = document.getElementById('btn-prev');
+  const btnNext  = document.getElementById('btn-next');
+  const cards    = track.querySelectorAll('.song-card');
+  let   current  = 0;
+  const total    = cards.length;
+
+  // Criar dots
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsEl.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  // Auto-play
+  let timer = setInterval(() => goTo(current + 1), 6000);
+  [btnPrev, btnNext].forEach(b =>
+    b.addEventListener('click', () => { clearInterval(timer); timer = setInterval(() => goTo(current+1), 6000); })
+  );
+
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive:true });
+  track.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(current + (dx > 0 ? -1 : 1));
+  }, { passive:true });
+})();
+
+/* ═══════════════════════════
+   MENSAGEM / EDITOR
+═══════════════════════════ */
+function saveMessage() {
+  const title = document.getElementById('input-title').value.trim();
+  const body  = document.getElementById('input-body').value.trim();
+  const sig   = document.getElementById('input-sig').value.trim();
+
+  if (title) document.getElementById('msg-title').textContent = title;
+  if (body)  document.getElementById('msg-body').textContent  = body;
+  if (sig)   document.getElementById('msg-sig').textContent   = '✦ ' + sig;
+
+  const toast = document.getElementById('toast');
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 3000);
+
+  document.getElementById('grimoire-card').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+/* Preencher inputs com padrão ao carregar */
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('input-title').value = document.getElementById('msg-title').textContent;
+  document.getElementById('input-body').value  = document.getElementById('msg-body').textContent.trim();
+  document.getElementById('input-sig').value   = 'Com amor — ✦';
+});
+
+/* ═══════════════════════════
+   CONTADOR
+═══════════════════════════ */
+(function() {
+  // ✏️ ALTERE A DATA AQUI para o primeiro dia de vocês (ano, mês-1, dia, hora, min, seg)
+  const START = new Date(2024, 0, 1, 0, 0, 0); // Ex: 1 de janeiro de 2024
+
+  function update() {
+    const now  = new Date();
+    const diff = Math.max(0, now - START);
+
+    const totalSec = Math.floor(diff / 1000);
+    const sec   = totalSec % 60;
+    const min   = Math.floor(totalSec / 60) % 60;
+    const hours = Math.floor(totalSec / 3600) % 24;
+    const days  = Math.floor(totalSec / 86400);
+
+    document.getElementById('cnt-days').textContent  = days;
+    document.getElementById('cnt-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cnt-min').textContent   = String(min).padStart(2,'0');
+    document.getElementById('cnt-sec').textContent   = String(sec).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+/* ═══════════════════════════
+   SCROLL REVEAL
+═══════════════════════════ */
+(function() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>
